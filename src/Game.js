@@ -8,14 +8,14 @@ const Stars = (props) => {
         StarArray.push(<span key={i} className="fa fa-star"></span>);
     }
     return (
-        <div className="col-5">{StarArray}</div>
+        <div className="col-4">{StarArray}</div>
     );
 };
 
 const Button = (props) => {
     let classNames = ['equal-mark', 'fas', props.isCorrent === true ? 'fa-check' : props.isCorrent === false ? 'fa-times' : 'fa-equals'];
     return(
-        <div className="col-2 text-center">
+        <div className="col-3 text-center">
             <i className={classNames.join(' ')} onClick={(e) => props.handleEqual(e)}></i>
             <br />
             <i className="fas fa-sync-alt" onClick={(e) => props.handleRefresh(e)}>{props.refreshLeft}</i>
@@ -52,7 +52,7 @@ export default class Game extends Component {
             numberOfStars: Math.floor(Math.random() * 9) + 1,
             selectedNumbers: [],
             usedNumbers:[],
-            refreshLeft: 5,
+            refreshLeft: 10,
             resultMsg: null,
             isCorrent: null
         };
@@ -107,7 +107,7 @@ export default class Game extends Component {
             numberOfStars: Math.floor(Math.random() * 9) + 1,
             selectedNumbers: [],
             usedNumbers:[],
-            refreshLeft: 5,
+            refreshLeft: 10,
             resultMsg: null,
             isCorrent: null
         })

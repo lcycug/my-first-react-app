@@ -66,7 +66,7 @@
   width: 2rem;
   display: inline-block;
   border-radius: 15%;
-  margin: 1rem;
+  margin: .5rem;
   padding: .5rem;
 }
 
@@ -82,6 +82,3 @@
   cursor: pointer;
 }
 
-.row {
-  height: 6rem;
-}
