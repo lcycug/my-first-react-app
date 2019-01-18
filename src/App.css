@@ -1,0 +1,87 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fa.fa-star {
+  margin: 1rem
+}
+
+.num {
+  color: white;
+  background-color: dimgrey;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-block;
+  border-radius: 50%;
+  text-align: center;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.num.selected {
+  /* cursor: not-allowed; */
+  background-color: rgb(233, 203, 34);
+  color: #282c34;
+}
+
+.num.used {
+  cursor: not-allowed;
+  background-color: rgb(51, 233, 34);
+  color: black;
+}
+
+.equal-mark {
+  cursor: pointer;
+  border: grey .1rem solid;
+  height: 2rem;
+  width: 2rem;
+  display: inline-block;
+  border-radius: 15%;
+  margin: 1rem;
+  padding: .5rem;
+}
+
+.equal-mark.fa-check {
+  background-color: rgb(73, 226, 73);
+}
+
+.equal-mark.fa-times {
+  background-color: rgb(230, 128, 128);
+}
+
+.fas.fa-sync-alt, .replay {
+  cursor: pointer;
+}
+
+.row {
+  height: 6rem;
+}
