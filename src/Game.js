@@ -8,14 +8,14 @@ const Stars = (props) => {
         StarArray.push(<span key={i} className="fa fa-star"></span>);
     }
     return (
-        <div className="col-4">{StarArray}</div>
+        <div className="col-lg-3 offset-lg-1 col-sm-10 offset-sm-1 col-md-4 offset-md-0">{StarArray}</div>
     );
 };
 
 const Button = (props) => {
     let classNames = ['equal-mark', 'fas', props.isCorrent === true ? 'fa-check' : props.isCorrent === false ? 'fa-times' : 'fa-equals'];
     return(
-        <div className="col-3 text-center">
+        <div className="col-lg-3 col-md-3 col-sm-10 text-center">
             <i className={classNames.join(' ')} onClick={(e) => props.handleEqual(e)}></i>
             <br />
             <i className="fas fa-sync-alt" onClick={(e) => props.handleRefresh(e)}>{props.refreshLeft}</i>
@@ -29,7 +29,7 @@ const Anwser = (props) => {
         selectedNmbs.push(<span key={props.selectedNumbers[i]} className="num selected" onClick={() => props.handleUnpick(props.selectedNumbers[i])}>{props.selectedNumbers[i]}</span>);
     }
     return(
-        <div className="col-3">{selectedNmbs}</div>
+        <div className="col-lg-4 col-md-5 col-sm-12">{selectedNmbs}</div>
     );
 };
 
@@ -41,7 +41,7 @@ const NumbersPool = (props) => {
         numberPool.push(<span className={classNames.join(' ')} key={i} onClick={classNames.includes('used') ? null : classNames.includes('selected') ? () => props.handleUnpick(i) : () => props.handlePick(i)}>{i}</span>);
     }
     return (
-        <div>{numberPool}</div>
+        <div className="col-12 text-center">{numberPool}</div>
     );
 };
 
@@ -61,14 +61,16 @@ export default class Game extends Component {
     handleEqual = (event) => {
         let result = this.state.selectedNumbers.reduce((a, b) => a + b, 0) === this.state.numberOfStars ? true : false;
         this.setState((prevState) => {
-            return prevState.refreshLeft === 1 ? {
-                resultMsg: 'Game Over!'
-            } : result === true ? {
+            return result === true ? (prevState.usedNumbers.length === 8 ? {
+                resultMsg: 'Brilliant!',
+                selectedNumbers: [],
+                usedNumbers: [...prevState.usedNumbers, ...prevState.selectedNumbers],
+            } : {
                 numberOfStars: Math.floor(Math.random() * 9) + 1,
                 selectedNumbers: [],
                 usedNumbers: [...prevState.usedNumbers, ...prevState.selectedNumbers],
                 isCorrent: true
-            } : {
+            }) : {
                 isCorrent: false
             }
         });
@@ -80,7 +82,8 @@ export default class Game extends Component {
                 resultMsg: 'Game Over!'
             } : {
                 numberOfStars: Math.floor(Math.random() * 9) + 1,
-                refreshLeft: prevState.refreshLeft - 1
+                refreshLeft: prevState.refreshLeft - 1,
+                selectedNumbers: []
             }
         });
     }
